@@ -3,7 +3,8 @@ Delvien
 
 A Rostock (delta 3D printer) fork build in Vienna 
 
-![Simulation](http://cdn.makeagif.com/media/11-18-2013/hzW0wg.gif)
+![Simulation](https://drive.google.com/uc?export=download&id=0BwT_vqurq8C9cTk5RjJLa0ViNk0)
+
 
 A lot of chnages have bin made and all files were rewritten form scratch!
 
@@ -16,5 +17,3 @@ The changes in detail:
 
 Its still work in progess!
 Feel free to use the idears for your design
-
-
