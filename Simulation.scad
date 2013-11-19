@@ -6,6 +6,7 @@ use <joint.scad>
 use <motor_end.scad>
 use <top_end.scad>
 use <band_tighter.scad>
+use <endstop.scad>
 
 simple=false;
 
@@ -146,6 +147,10 @@ for(i=[0:arms-1])
 			for(y=[-15,15])
 			translate([lg_c,y,1000-nema17_od-10-19-20+5-40])
 				cylinder(h=40,r=4/2);
+
+			//Endstop
+			translate([lg_c,0,1000-nema17_od-10-19-20-50])
+				endstop();
 	
 		}
 	}

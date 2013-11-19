@@ -29,7 +29,6 @@ module clip(h,d,w=3,c=1,n=2)
 
 
 }
-//clip(20,10);
 
 module nema17(screw_l=5) {
   color([0.4, 0.4, 0.4]) 
@@ -81,3 +80,53 @@ module narrow_pulley(bore_diameter, outside_diameter, width,
   }
 }
 
+module mircoswitch(a=1)
+{
+	l=20;
+	w=6;
+	h=10;
+	holes_h=2.9;
+	holes_d=9.5;
+	holes_c=5.3+holes_d/2;
+	holes_r=2.5/2;
+
+	f1=-holes_c+1.7;
+	f2=f1+8.8;
+	f3=f2+7.7;
+	fd=0.6;
+	fw=3.2;
+	fh=6.4;
+
+	trigger_h=1;
+	trigger_l=2;
+	trigger_w=4;
+	trigger_ofc=7.5-holes_d/2;
+
+	difference()
+	{
+		union()
+		{
+			//Base
+			color("black",a)
+			translate([-holes_c,-w/2,-holes_h])
+				cube([l,w,h]);
+
+			//feets
+			color(steel,a)
+			for(d=[f1,f2,f3])
+			translate([-fd/2+d,-fw/2,-fh])
+				cube([fd,fw,fh]);
+
+			//trigger
+			color("white",a)
+			translate([-trigger_l/2-trigger_ofc,-trigger_w/2,h-holes_h])
+				cube([trigger_l,trigger_w,trigger_h]);
+		}
+		//drills
+		for(d=[-holes_d/2,holes_d/2])
+		translate([d,0,0])
+		rotate([90,0,0])
+			cylinder(h=w+2,r=holes_r,center=true);
+	}
+
+}

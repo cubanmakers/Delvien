@@ -1,5 +1,6 @@
 include <config.scad>
 use <joint.scad>
+use <endstop.scad>
 
 module carriage()
 {
@@ -33,7 +34,10 @@ module carriage()
 			translate([-LMXXUU_d/2,band_outer_d/2,-joint_hh/2])
 				cube([LMXXUU_d,5,LMXXUU_l]);
 
-			
+			//endstop
+			translate([0,0,-joint_hh/2])
+				endstop_carriage();
+
 		}
 
 		//LMXXUU
