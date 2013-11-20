@@ -49,7 +49,7 @@ module endstop_carriage()
 				cylinder(h=q+2,r=2/2+play);
 			//Nut
 			translate([0,0,q/2])
-				cylinder(h=M2_nut_h,r=M2_nut_d/2,center=true,$fn=6);
+				cylinder(h=M2_nut_h,r=M2_nut_d/2+play,center=true,$fn=6);
 			translate([0,-M2_nut_w/2,q/2-M2_nut_h/2])
 				cube([q/2+1,M2_nut_w,M2_nut_h]);
 		}
