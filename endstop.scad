@@ -4,8 +4,6 @@ use <top_end.scad>
 use <band_tighter.scad>
 use <carriage.scad>
 
-
-
 module endstop()
 {
 	translate([0,lg_d/2,0])
@@ -61,6 +59,7 @@ module endstop_carriage()
 }
 
 endstop();
+
 
 %union()
 {

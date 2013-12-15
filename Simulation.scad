@@ -7,6 +7,7 @@ use <motor_end.scad>
 use <top_end.scad>
 use <band_tighter.scad>
 use <endstop.scad>
+use <distanceholder.scad>
 
 simple=false;
 
@@ -84,7 +85,7 @@ module line(s, e)
 			%color("SkyBlue",a*0.5)
 			//Front
 			translate([-s/2-d,-s/2-4,0]) 
-				rotate([0,0,-45])
+				rotate([0,0,-120])
 				cube([s+2*d,2,h]);
 		}
 	}
@@ -148,8 +149,13 @@ for(i=[0:arms-1])
 			translate([lg_c,y,1000-nema17_od-10-19-20+5-40])
 				cylinder(h=40,r=4/2);
 
+			//distanceholder
+			translate([lg_c,(i==2?-1:1)*lg_d/2,1000-nema17_od-10-19-20-50+5])						
+				distanceholder();
+
 			//Endstop
 			translate([lg_c,0,1000-nema17_od-10-19-20-50])
+				mirror([0,i==2?1:0,0])
 				endstop();
 	
 		}
