@@ -8,6 +8,7 @@ use <top_end.scad>
 use <band_tighter.scad>
 use <endstop.scad>
 use <distanceholder.scad>
+use <fan.scad>
 
 simple=false;
 
@@ -88,7 +89,22 @@ module line(s, e)
 				rotate([0,0,-120])
 				cube([s+2*d,2,h]);
 		}
+
+		//fans
+		assign(h=950-arm_l)
+		for(h=[h/3-h/6,2*h/3-h/6,3*h/3-h/6])
+		for(i=[0,1])
+		rotate([0,0,180+i*90])
+		translate([-s/2,-s/2,h])
+		{
+			fanholder();
+				//fan
+			rotate([90,0,-45])
+			translate([0,0,-61])
+				fan(50,15.5,40,4.5);
+		}
 	}
+
 }
 
 
