@@ -131,7 +131,7 @@ rotate([0,90,0])
 		% fan(50,15.5,40,4.5);
 	
 	//wall
-	 *% color(wood)
+	 % color(wood)
 	translate([0,0,-60])
 	{
 		translate([-19,-19,0])

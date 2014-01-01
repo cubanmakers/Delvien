@@ -30,7 +30,7 @@ module clip(h,d,w=3,c=1,n=2)
 
 }
 
-module nema17(screw_l=5) {
+module nema17(screw_l=5,screws=[true,true,true,true]) {
   color([0.4, 0.4, 0.4]) 
   {
   translate([0, -nema17_l/2, 0])
@@ -45,11 +45,13 @@ module nema17(screw_l=5) {
   translate([0, -nema17_l/2+10, 0]) rotate([90, 0, 0])
     cylinder(r=2.5, h=nema17_l+21, center=true);
   translate([0,screw_l+4,0])
-  for (a = [0, 90, 180, 270]) rotate([0, a, 0]) {
+  for (a = [0, 90, 180, 270]) 
+  	if(screws[a/90])
+	rotate([0, a, 0]) {
     color([0.2, 0.2, 0.2]) translate([nema17_screw_d/2, 0, nema17_screw_d/2])
       rotate([90, 0, 0]) {
       translate([0, 0, 0]) cylinder(r=2.5, h=4);
-      translate([0, 0, 0]) cylinder(r=1.5, h=12);
+      translate([0, 0, 0]) cylinder(r=1.5, h=screw_l+10);
     }
     color(steel) translate([nema17_screw_d/2, -3.5, nema17_screw_d/2])
       rotate([90, 0, 0]) cylinder(r=5, h=0.5);

@@ -54,6 +54,11 @@ M4_nut_d=7.66+2*play;
 M4_nut_w=7+2*play;
 M4_nut_h=3.2+2*play;
 
+//Mutter M8
+M8_nut_d=14.38+2*play;
+M8_nut_w=13+2*play;
+M8_nut_h=6.8+2*play;
+
 //LMXXUU Linear Ball Bearing
 LMXXUU_d=19;
 LMXXUU_l=29;
@@ -66,6 +71,14 @@ band_outer_d=13;
 band_bb_id=5;
 band_bb_od=11;
 band_bb_w=4;
+
+//Bearing
+B608Z_od=22+2*play;
+B608Z_id=8+2*play;
+B608Z_isd=13;
+B608Z_h=7;
+
+
 
 
 //Nema17

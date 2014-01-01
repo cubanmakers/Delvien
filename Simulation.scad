@@ -95,7 +95,7 @@ module line(s, e)
 		for(h=[h/3-h/6,2*h/3-h/6,3*h/3-h/6])
 		for(i=[0,1])
 		rotate([0,0,180+i*90])
-		translate([-s/2,-s/2,h])
+		translate([-s/2,-s/2,0])
 		{
 			fanholder();
 				//fan

@@ -1,6 +1,25 @@
 include <config.scad>
 use <joint.scad>
 
+module platform_holes(mode=0,h)
+{
+
+	//Cutout
+	if(mode==0)
+		cylinder(h=h,r=platform_inner_r,center=true);
+
+	for(a=[0:arm_n])
+	rotate([0,0,360/arm_n*a])
+	{
+		if(mode==1)
+		translate([45,0,0])
+			cylinder(r=(4+2*play)/2,h=h,center=true);
+		if(mode==2)
+		translate([-(platform_inner_r+platform_outer_r)/2,0,0])
+			cylinder(r=(4+2*play)/2,h=h,center=true);
+	}
+}
+
 module platform()
 {
 	hl=joint_b+joint_l+4*play;
@@ -26,17 +45,16 @@ module platform()
 				}
 			}
 		}
-		//Cutout
-		cylinder(h=joint_hh+2,r=platform_inner_r,center=true);
+
+
+		platform_holes(0,joint_hh+2);		
+		platform_holes(1,joint_hh+2);		
+		platform_holes(2,joint_hh+2);		
 
 		//joint holder cutout
 		for(a=[0:arm_n])
 		rotate([0,0,360/arm_n*a])
 		{
-			translate([45,0,0])
-				cylinder(r=(4+2*play)/2,h=joint_hh+2,center=true);
-			translate([-(platform_inner_r+platform_outer_r)/2,0,0])
-				cylinder(r=(4+2*play)/2,h=joint_hh+2,center=true);
 			translate([-platform_c,0,0])
 			{
 				for(d=[-arm_d/2,arm_d/2])	
