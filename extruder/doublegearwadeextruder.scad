@@ -57,9 +57,9 @@ module extruder_part(part,showcomp=false)
 			//joint screw
 			if(part==0)
 			assign(h_=2*b+4)
-			translate([-pully_d/2-b-wade_gear_d-B608Z_od/2+3,-h,-h_/2+4/2+8/2+1])
+			translate([-pully_d-B608Z_od/2-wade_gear_d+3,-h,-h_/2+4/2+8/2+1])
 			difference()
-				cube([pully_d/2+2*b,h,h_]);
+				cube([pully_d+B608Z_od/2,h,h_]);
 
 			if(part==1)
 			assign(d=4+8+4*play)
@@ -133,7 +133,11 @@ module extruder_part(part,showcomp=false)
 		for(d=[d/2,-d/2])
 		translate([-wade_gear_d-B608Z_od/2-b-8/2,0,d-4/2-8/2-1])
 		rotate([90,0,0])
+		{
 			cylinder(r=8/2,h=h+1);
+			translate([0,0,-1])
+			cylinder(h=M8_nut_h+1,r=M8_nut_d/2,$fn=6);
+		}
 
 		if(part==0)
 		translate([0,-h+B608Z_h+4/2,4/2+8/2+1])
@@ -298,7 +302,7 @@ rotate([0,(showcomp?45:0),0])
 	} 
 }
 
-extruder(true,10);
+extruder(true,0);
 
 
 
