@@ -13,6 +13,7 @@ module extruder_part(part,showcomp=false)
 {
 	difference()
 	{
+		assign($fs = 5)
 		union()
 		{
 			//Motor holder
@@ -27,8 +28,8 @@ module extruder_part(part,showcomp=false)
 					cube([nema17_od*sqrt(2)/2,motor_holder_h+2,(nema17_od-2*b)]);
 			}
 			//Base
-			translate([-wade_gear_d,-(part==0?10:b),-(B608Z_od+b*2)/2])
-				cube([wade_gear_d,(part==0?10:b),B608Z_od+b*2]);
+			translate([-wade_gear_d,-b,-(B608Z_od+b*2)/2])
+				cube([wade_gear_d,b,B608Z_od+b*2]);
 			
 			//Barringholder
 			translate([-wade_gear_d,0,0])
@@ -79,8 +80,8 @@ module extruder_part(part,showcomp=false)
 			//Mount
 			if(part==0)
 			rotate([0,-45,0])
-			translate([nema17_od/2+10/2+5,-h/2,0])
-				cube([10,h,nema17_od],center=true);
+			translate([nema17_od/2+b/2+5,-h/4,0])
+				cube([b,h/2,nema17_od],center=true);
 			 
 		}
 
@@ -191,9 +192,9 @@ module extruder_part(part,showcomp=false)
 		//rod
 		translate([-wade_gear_d,0,0])
 		rotate([90,0,0])
-		translate([0,0,-20])
+		translate([0,0,-10])
 		color(steel)
-			cylinder(h=h+38,r=8/2);
+			cylinder(h=h+28,r=8/2);
 
 		//Pully
 		translate([-wade_gear_d,0,0])
@@ -219,9 +220,9 @@ module joint_screw()
 {
 	difference()
 	{
+		assign($fs = 5)
 		union()
 		{
-
 			//joint screw
 			assign(d=4+8+4*play)
 			for(d=[d/2,-d/2])
